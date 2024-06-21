@@ -3,8 +3,12 @@ import { HiOutlineBars3 } from "react-icons/hi2";
 import { MdDarkMode } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { MdOutlineLightMode } from "react-icons/md";
+import { useDispatch, useSelector } from "react-redux";
+import { handleToggleTrue, handleToggleFalse } from "../utils/toggleSlice";
 
-const Header = ({ isDarkMode, setisDarkMode }) => {
+const Header = () => {
+  const dispatch = useDispatch();
+  const isDarkMode = useSelector((store) => store.toggle.toggle);
   return (
     <>
       <nav
@@ -27,12 +31,12 @@ const Header = ({ isDarkMode, setisDarkMode }) => {
         <div>
           {isDarkMode ? (
             <MdOutlineLightMode
-              onClick={() => setisDarkMode(false)}
+              onClick={() => dispatch(handleToggleFalse())}
               className="text-2xl cursor-pointer text-white"
             />
           ) : (
             <MdDarkMode
-              onClick={() => setisDarkMode(true)}
+              onClick={() => dispatch(handleToggleTrue())}
               className="text-2xl cursor-pointer"
             />
           )}

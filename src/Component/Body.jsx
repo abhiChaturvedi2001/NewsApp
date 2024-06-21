@@ -1,10 +1,10 @@
 import React from "react";
 import Header from "./Header";
 
-const Body = ({ isDarkMode, setisDarkMode }) => {
+const Body = () => {
   return (
     <>
-      <Header isDarkMode={isDarkMode} setisDarkMode={setisDarkMode} />
+      <Header />
     </>
   );
 };

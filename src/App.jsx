@@ -4,9 +4,10 @@ import NewsArea from "./Component/NewsArea";
 import Main from "./Component/Main";
 import { createBrowserRouter, Outlet } from "react-router-dom";
 import SingleNews from "./Component/SingleNews";
+import { useSelector } from "react-redux";
 
 const App = () => {
-  const [isDarkMode, setisDarkMode] = useState(false);
+  const isDarkMode = useSelector((store) => store.toggle.toggle);
   return (
     <>
       <div
@@ -14,8 +15,8 @@ const App = () => {
           isDarkMode ? "bg-[#0f172a]" : "bg-[#f2e9da]"
         } min-h-[100vh] h-auto`}
       >
-        <Body isDarkMode={isDarkMode} setisDarkMode={setisDarkMode} />
-        <Outlet isDarkMode={isDarkMode} />
+        <Body />
+        <Outlet />
       </div>
     </>
   );

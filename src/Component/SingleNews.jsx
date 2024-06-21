@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import useNewsApi from "../utils/useNewsApi";
-import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const SingleNews = () => {
   const location = useLocation();
@@ -9,6 +9,7 @@ const SingleNews = () => {
   const { name } = useParams();
   const { category } = location.state || {};
   const { newsData } = useNewsApi(category);
+  const isDarkMode = useSelector((store) => store.toggle.toggle);
 
   useEffect(() => {
     const data = newsData.filter((items) => {
@@ -23,7 +24,11 @@ const SingleNews = () => {
     <h1>loading....</h1>
   ) : (
     <>
-      <div className="w-[50%] mx-auto mt-[50px] min-h-[100vh] h-auto">
+      <div
+        className={`w-[50%] mx-auto mt-[50px] min-h-[100vh] h-auto ${
+          isDarkMode ? "text-white" : "text-black"
+        }`}
+      >
         {filterData.map((items) => {
           const { urlToImage, title, description, url } = items;
           return (

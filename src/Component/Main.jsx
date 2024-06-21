@@ -1,7 +1,9 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-const Main = ({ isDarkMode }) => {
+const Main = () => {
+  const isDarkMode = useSelector((store) => store.toggle.toggle);
   return (
     <>
       <div className="flex items-center justify-center h-[70vh] text-center">
