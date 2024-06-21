@@ -38,7 +38,7 @@ const NewsArea = () => {
           })}
         </div>
         <div className="grid grid-cols-4 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 justify-items-center mt-[50px] gap-y-5 ">
-          {currentPost.map((items) => {
+          {newsData.length === 0 ? <h1>loading....</h1> : currentPost.map((items) => {
             return (
               <Link
                 to={`/latestNews/${items?.source?.name}`}
